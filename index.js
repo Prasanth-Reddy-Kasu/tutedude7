@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
 app.post("/add", (req, res) => {
   const { title, priority } = req.body;
   const filter = req.query.filter || "all";
-  //if (!title.trim()) return res.redirect(`/?error=1&filter=${filter}`);
+  if (!title.trim()) return res.redirect(`/?error=1&filter=${filter}`);
   todos.push({ id: Date.now(), title, priority });
   res.redirect(`/?filter=${filter}`);
 });
