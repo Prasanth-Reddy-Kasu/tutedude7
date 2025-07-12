@@ -35,7 +35,7 @@ app.post("/add", (req, res) => {
   res.redirect(`/?filter=${filter}${showError ? "&error=1" : ""}`);
 });
 
-app.put("/edit", (req, res) => {
+app.post("/edit", (req, res) => {
   const { id, title, priority } = req.body;
   const filter = req.query.filter || "all";
   const todo = todos.find((t) => t.id == id);
@@ -46,7 +46,7 @@ app.put("/edit", (req, res) => {
   res.redirect(`/?filter=${filter}`);
 });
 
-app.delete("/delete", (req, res) => {
+app.post("/delete", (req, res) => {
   todos = todos.filter((t) => t.id != req.body.id);
   const filter = req.query.filter || "all";
   res.redirect(`/?filter=${filter}`);
