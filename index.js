@@ -2,6 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const port = process.env.PORT || 3000;
+const methodOverride = require("method-override");
+app.use(methodOverride("_method"));
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
@@ -46,8 +48,8 @@ app.put("/edit", (req, res) => {
   res.redirect(`/?filter=${filter}`);
 });
 
-app.delete("/delete", (req, res) => {
-  todos = todos.filter((t) => t.id != req.body.id);
+app.delete("/delete/:id", (req, res) => {
+  todos = todos.filter((t) => t.id != req.params.id);
   const filter = req.query.filter || "all";
   res.redirect(`/?filter=${filter}`);
 });
