@@ -28,7 +28,7 @@ app.post("/add", (req, res) => {
   const { title, priority } = req.body;
   const filter = req.query.filter || "all";
 
-  const taskTitle = title.trim() || "Untitled Task";
+  const taskTitle = title.trim();
 
   const showError = !title.trim();
 
