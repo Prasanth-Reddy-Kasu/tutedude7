@@ -30,10 +30,10 @@ app.post("/add", (req, res) => {
 
   const taskTitle = title.trim();
 
-  if (!taskTitle) {
-    alert("Task cannot be empty.");
-    return;
-  }
+  if (!taskTitle.trim()) {
+  alert("Task cannot be empty.");
+  return;
+}
 
   todos.push({ id: Date.now(), title: taskTitle, priority });
 
