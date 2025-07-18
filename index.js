@@ -31,7 +31,8 @@ app.post("/add", (req, res) => {
   const taskTitle = title.trim();
 
   if (!taskTitle) {
-    return res.redirect(`/?filter=${filter}&error=1`);
+    alert("Task cannot be empty.");
+    return;
   }
 
   todos.push({ id: Date.now(), title: taskTitle, priority });
