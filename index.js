@@ -30,11 +30,13 @@ app.post("/add", (req, res) => {
 
   const taskTitle = title.trim();
 
-  const showError = !title.trim();
+  if (!taskTitle) {
+    return res.redirect(`/?filter=${filter}&error=1`);
+  }
 
   todos.push({ id: Date.now(), title: taskTitle, priority });
 
-  res.redirect(`/?filter=${filter}${showError ? "&error=1" : ""}`);
+  res.redirect(`/?filter=${filter}`);
 });
 
 app.put("/edit", (req, res) => {
